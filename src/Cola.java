@@ -9,17 +9,18 @@ public class Cola {
     }
 
     public void predefinir(){
-        coleccion.add(new Pasajero("Ariel",1,"ECONIMOCO"));
+        coleccion.add(new Pasajero("Ariel",1,"ECONOMICO"));
         coleccion.add(new Pasajero("Juan",20,"PRIMERA CLASE"));
         coleccion.add(new Pasajero("Floricienta",4,"PRIMERA CLASE"));
         coleccion.add(new Pasajero("Bere",40,"EJECUTIVO"));
     }
 
-    public void agregar(Pasajero p){
+    public void agregar(Pasajero p) throws Exception {
         if(p!=null){
             coleccion.add(p);
         }
-        throw new IllegalArgumentException("Pasajero no puede ser nulo");
+        else{
+        throw new Exception("Pasajero no puede ser nulo");}
     }
 
     public Pasajero extraer() throws Exception {
@@ -34,6 +35,16 @@ public class Cola {
         }
         return coleccion.peek();
     }
+    public int size(){
+        return coleccion.size();
+    }
 
-
+    @Override
+    public String toString() {
+        StringBuilder sb= new StringBuilder();
+        for(Pasajero aux:coleccion){
+            sb.append(aux.toString());
+        }
+    return !sb.toString().isEmpty() ?sb.toString():"Cola sin elementos";
+    }
 }
